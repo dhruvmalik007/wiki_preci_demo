@@ -2,3 +2,5 @@ datasets
 uvicorn
 streamlit
 textblob
+streamlit-extras
+streamlit-searchbox
