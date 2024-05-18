@@ -1,4 +1,6 @@
-FROM python:3.11-slim
+
+
+FROM python:3.11-slim as deployment
 
 WORKDIR /app
 
@@ -11,3 +13,4 @@ ARG PORT
 EXPOSE ${PORT:-8000}
 
 CMD streamlit run --server.port ${PORT:-8000} src/app.py
+
