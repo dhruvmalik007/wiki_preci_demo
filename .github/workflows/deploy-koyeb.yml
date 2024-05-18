@@ -25,7 +25,7 @@ jobs:
           app-name: wiki-preci_${{ github.ref_name }}
           service-env: "PORT=8501"
           service-ports: "8501:http"
-          service-routes: "/:8000"
+          service-routes: "/:8501"
           git-docker-dockerfile: Dockerfile.koyeb
           privileged: true
           skip-cache: true
