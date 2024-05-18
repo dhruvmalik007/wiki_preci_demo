@@ -4,3 +4,12 @@ streamlit
 textblob
 streamlit-extras
 streamlit-searchbox
+google-cloud-firestore
+google-cloud-datastore
+openai
+tenacity
+langchain
+langchain_openai
+tavily-python
+langchain-community
+python-dotenv

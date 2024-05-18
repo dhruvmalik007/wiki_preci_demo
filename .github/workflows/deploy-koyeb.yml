@@ -1,0 +1,29 @@
+name: Deployment of the application
+
+
+on:
+    push:
+      branches:
+        - '*'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install and configure the Koyeb CLI
+        uses: koyeb-community/install-koyeb-cli@main
+        with:
+          api_token: "${{ secrets.WIKI_PRECI_TOKEN }}"
+          api_url: "${{ inputs.api-url || 'https://app.koyeb.com' }}"
+
+      - name: Build and deploy the application
+        uses: koyeb/action-git-deploy@v1
+        with:
+          app-name: flask-${{ github.ref_name }}
+          service-env: "PORT=8000"
+          service-ports: "8000:http"
+          service-routes: "/:8000"
+          git-docker-dockerfile: Dockerfile
+          git-url: "github.com/${{ inputs.git-url || github.repository }}"
+          skip-cache: true
+
+  
