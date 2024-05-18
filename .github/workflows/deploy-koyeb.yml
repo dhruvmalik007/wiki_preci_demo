@@ -16,7 +16,7 @@ jobs:
           api_url: "${{ inputs.api-url || 'https://app.koyeb.com' }}"
 
       - name: Build the docker container 
-        run: docker-compose run app
+        run: docker-compose -f docker-compose.yml
 
         # uses: koyeb/action-git-deploy@v1
         # with:
