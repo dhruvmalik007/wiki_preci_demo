@@ -15,15 +15,17 @@ jobs:
           api_token: "${{ secrets.WIKI_PRECI_TOKEN }}"
           api_url: "${{ inputs.api-url || 'https://app.koyeb.com' }}"
 
-      - name: Build and deploy the application
-        uses: koyeb/action-git-deploy@v1
-        with:
-          app-name: flask-${{ github.ref_name }}
-          service-env: "PORT=8000"
-          service-ports: "8000:http"
-          service-routes: "/:8000"
-          git-docker-dockerfile: Dockerfile
-          git-url: "github.com/${{ inputs.git-url || github.repository }}"
-          skip-cache: true
+      - name: Build the docker container 
+        run: docker-compose run app
+
+        # uses: koyeb/action-git-deploy@v1
+        # with:
+        #   app-name: streamlit-${{ github.ref_name }}
+        #   service-env: "PORT=8000"
+        #   service-ports: "8000:http"
+        #   service-routes: "/:8000"
+        #   git-docker-dockerfile: Dockerfile
+        #   git-url: "github.com/${{ inputs.git-url || github.repository }}"
+        #   skip-cache: true
 
   
