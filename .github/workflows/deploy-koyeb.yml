@@ -20,13 +20,14 @@ jobs:
           api_token: "${{ secrets.WIKI_PRECI_TOKEN }}"
 
       - name: Build the docker container 
-        uses: koyeb/action-git-deploy@v1
-        with:
-          app-name: wiki-preci_${{ github.ref_name }}
-          service-env: "PORT=8501"
-          service-ports: "8501:http"
-          service-routes: "/:8501"
-          git-docker-dockerfile: Dockerfile.koyeb
-          privileged: true
-          skip-cache: true
+        #uses: koyeb/action-git-deploy@v1
+        run: docker-compose -f docker-compose.yaml
+        # with:
+        #   app-name: wiki-preci_${{ github.ref_name }}
+        #   service-env: "PORT=8501"
+        #   service-ports: "8501:http"
+        #   service-routes: "/:8501"
+        #   git-docker-dockerfile: Dockerfile.koyeb
+        #   privileged: true
+        #   skip-cache: true
   
