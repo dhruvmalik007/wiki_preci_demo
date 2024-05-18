@@ -1,4 +1,6 @@
-name: Deployment of the application
+name: Deployment of the application on koyeb
+
+
 
 
 on:
@@ -7,25 +9,24 @@ on:
         - '*'
 jobs:
   deploy:
+    concurrency:
+      group: "${{ github.ref_name }}"
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Install and configure the Koyeb CLI
         uses: koyeb-community/install-koyeb-cli@main
         with:
           api_token: "${{ secrets.WIKI_PRECI_TOKEN }}"
-          api_url: "${{ inputs.api-url || 'https://app.koyeb.com' }}"
 
       - name: Build the docker container 
-        run: docker-compose -f docker-compose.yml
-
-        # uses: koyeb/action-git-deploy@v1
-        # with:
-        #   app-name: streamlit-${{ github.ref_name }}
-        #   service-env: "PORT=8000"
-        #   service-ports: "8000:http"
-        #   service-routes: "/:8000"
-        #   git-docker-dockerfile: Dockerfile
-        #   git-url: "github.com/${{ inputs.git-url || github.repository }}"
-        #   skip-cache: true
-
+        uses: koyeb/action-git-deploy@v1
+        with:
+          app-name: wiki-preci_${{ github.ref_name }}
+          service-env: "PORT=8501"
+          service-ports: "8501:http"
+          service-routes: "/:8000"
+          git-docker-dockerfile: Dockerfile.koyeb
+          privileged: true
+          skip-cache: true
   
