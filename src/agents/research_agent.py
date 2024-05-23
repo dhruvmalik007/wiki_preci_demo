@@ -48,13 +48,8 @@ OUTPUT_FORMAT:
 """
 
 
-
-
 class ResearchAgent():
     agentLLM: ChatOpenAI
     tavily_research: TavilySearchResults
-    revert_messages: Dict[str, List[Tuple[str,str]]] ## stores the tupple with admin name --> (sender and corresponding message)
-    
-    
-    
-     
+    # stores the tupple with admin name --> (sender and corresponding message)
+    revert_messages: Dict[str, List[Tuple[str, str]]]
