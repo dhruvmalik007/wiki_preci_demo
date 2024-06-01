@@ -1,12 +1,8 @@
 name: Deployment of the application on koyeb
-
-
-
-
 on:
-    push:
-      branches:
-        - '*'
+  push:
+    branches:
+      - "*"
 jobs:
   deploy:
     concurrency:
@@ -18,8 +14,7 @@ jobs:
         uses: koyeb-community/install-koyeb-cli@main
         with:
           api_token: "${{ secrets.WIKI_PRECI_TOKEN }}"
-
-      - name: Build the docker container 
+      - name: Build the docker container
         uses: koyeb/action-git-deploy@v1
         with:
           app-name: wiki-preci_${{ github.ref_name }}
@@ -28,4 +23,3 @@ jobs:
           git-docker-dockerfile: Dockerfile.koyeb
           privileged: true
           skip-cache: true
-  
