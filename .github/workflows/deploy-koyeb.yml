@@ -16,7 +16,7 @@ jobs:
         run: |
           echo ${{github.sha}} - commit sha that triggered this workflow
       - name: Install and configure the Koyeb CLI
-        uses: koyeb-community/install-koyeb-cli@main
+        uses: koyeb-community/install-koyeb-cli@v2
         with:
           api_token: "${{ secrets.WIKI_PRECI_TOKEN }}"
       - name: Build the docker container
@@ -25,6 +25,5 @@ jobs:
           app-name: wiki-preci_${{ github.ref_name }}
           service-ports: "8000:http"
           service-routes: "/:8000"
-          git-docker-dockerfile: Dockerfile.koyeb
           privileged: true
           skip-cache: true
