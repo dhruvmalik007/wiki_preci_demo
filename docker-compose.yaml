@@ -6,7 +6,7 @@ services:
     environment:
       - PORT=8501
     ports:
-      - "8501"
+      - "8501:8501"
   
 
 

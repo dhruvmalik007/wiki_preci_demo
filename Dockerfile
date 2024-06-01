@@ -12,5 +12,5 @@ ARG PORT
 
 EXPOSE 8501
 
-CMD streamlit run --server.port 8501 src/app.py
+CMD streamlit run --server.port 8501:8501 src/app.py
 
