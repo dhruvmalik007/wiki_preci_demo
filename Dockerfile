@@ -10,7 +10,7 @@ RUN pip install -r requirements.txt && pip cache purge
 
 ARG PORT
 
-EXPOSE ${PORT:-8000}
+EXPOSE 8501
 
-CMD streamlit run --server.port ${PORT:-8000} src/app.py
+CMD streamlit run --server.port 8501 src/app.py
 
