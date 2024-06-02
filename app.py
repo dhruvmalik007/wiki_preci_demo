@@ -48,8 +48,6 @@ def showcase_pagehistory_migration(revert_obj: Reverts, num_of_records):
     # except Exception as e:
     #     print("in pagehistory_migration: " + str(e))
 
-
-
 def main():
     revertObj: Reverts
     cloud_fns: CloudFunctions

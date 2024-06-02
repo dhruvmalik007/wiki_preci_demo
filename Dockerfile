@@ -12,5 +12,5 @@ ARG PORT
 
 EXPOSE ${PORT:-8000}
 
-CMD streamlit run --server.port ${PORT:-8000} src/app.py
+CMD streamlit run --server.port ${PORT:-8000} app.py
 
